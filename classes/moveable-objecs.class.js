@@ -5,18 +5,14 @@ class MoveableObject{
     width = 100;
     img;
 
-    //loadImage('img/text.png');
     loadImage(path){
         this.img = new Image();
         this.img.src = path
     }
 
-    moveLeft(){
-        console.log('Moving Left');
-        
+    moveLeft(){        
     }
 
     moveRight(){
-        console.log('Moving Right');        
     }
 }
