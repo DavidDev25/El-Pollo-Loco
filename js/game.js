@@ -9,11 +9,11 @@ function init(){
 }
 
 window.addEventListener("keydown", (e) => {
-    if(e.keyCode == 39) {
+    if(e.keyCode == 39 || e.keyCode == 68) {
         keyboard.RIGHT = true;
     }
 
-    if(e.keyCode == 37){
+    if(e.keyCode == 37 || e.keyCode == 65){
         keyboard.LEFT = true;
     }
 
@@ -34,11 +34,11 @@ window.addEventListener("keydown", (e) => {
 })
 
 window.addEventListener("keyup", (e) => {
-    if(e.keyCode == 39) {
+    if(e.keyCode == 39 || e.keyCode == 68) {
         keyboard.RIGHT = false;
     }
 
-    if(e.keyCode == 37){
+    if(e.keyCode == 37 || e.keyCode == 65){
         keyboard.LEFT = false;
     }
     
