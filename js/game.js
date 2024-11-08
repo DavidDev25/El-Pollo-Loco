@@ -17,11 +17,11 @@ window.addEventListener("keydown", (e) => {
         keyboard.LEFT = true;
     }
 
-    if(e.keyCode == 38){
+    if(e.keyCode == 38 || e.keyCode == 87){
         keyboard.UP = true;
     }
 
-    if(e.keyCode == 40){
+    if(e.keyCode == 40 || e.keyCode == 83){
         keyboard.DOWN  = true;
     }
 
@@ -42,11 +42,11 @@ window.addEventListener("keyup", (e) => {
         keyboard.LEFT = false;
     }
     
-    if(e.keyCode == 38){
+    if(e.keyCode == 38 || e.keyCode == 87){
         keyboard.UP = false;
     }
 
-    if(e.keyCode == 40){
+    if(e.keyCode == 40 || e.keyCode == 83){
         keyboard.DOWN  = false;
     }
 
