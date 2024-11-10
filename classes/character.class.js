@@ -3,6 +3,7 @@ class Character extends MoveableObject {
     height = 280;
     y = 155;
     camera_x = 0;
+    timeToIdle = 15000;
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-22.png',
         'img/2_character_pepe/2_walk/W-23.png',
@@ -110,16 +111,18 @@ class Character extends MoveableObject {
         }
         else if (this.isAboveGround()){
             this.playAnimation(this.IMAGES_JUMPING);
-            this.getActualTime();
+            this.storeTime();
         } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
             this.playAnimation(this.IMAGES_WALKING);
-            this.getActualTime();
+            this.storeTime();
             
-        } else if(this.storeTime < this.getActualTime) {
+        } else if((this.storeActualTime + this.timeToIdle) < this.getActualTime()) {
             this.playAnimation(this.IMAGES_SLEEPING);
         }
         else{
-            this.playAnimation(this.IMAGES_IDLE)
+            this.playAnimation(this.IMAGES_IDLE);
+            console.log("Ich IDLE rum");
+            
         } 
     }, 100);
 }
