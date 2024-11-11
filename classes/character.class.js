@@ -68,7 +68,10 @@ class Character extends MoveableObject {
         'img/2_character_pepe/1_idle/long_idle/I-20.png',
     ]
     world;
+
     walking_sound = new Audio('audio/running.mp3')
+    jumping_sound = new Audio('audio/jump.mp3')
+  
 
     constructor(){
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
@@ -149,9 +152,11 @@ class Character extends MoveableObject {
     handleJumping() {
         if(this.world.keyboard.UP && !this.isAboveGround()) {
             this.speedY = 30;
+            this.jumping_sound.play();
         }
         if(this.world.keyboard.SPACE && !this.isAboveGround()) {
             this.jump();
+            this.jumping_sound.play();
         }
     }
 
