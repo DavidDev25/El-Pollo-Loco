@@ -120,9 +120,7 @@ class Character extends MoveableObject {
             this.playAnimation(this.IMAGES_SLEEPING);
         }
         else{
-            this.playAnimation(this.IMAGES_IDLE);
-            console.log("Ich IDLE rum");
-            
+            this.playAnimation(this.IMAGES_IDLE);            
         } 
     }, 100);
 }
