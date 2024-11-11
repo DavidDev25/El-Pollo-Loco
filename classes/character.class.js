@@ -4,6 +4,7 @@ class Character extends MoveableObject {
     y = 155;
     camera_x = 0;
     timeToIdle = 15000;
+
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-22.png',
         'img/2_character_pepe/2_walk/W-23.png',
@@ -81,47 +82,100 @@ class Character extends MoveableObject {
         this.animate();
     }
     
-    animate(){
-        setInterval(() => {
-            this.walking_sound.pause();
-            if(this.world.keyboard.RIGHT  && this.x < this.world.level.level_end_x){
-                this.moveRight();
-                this.otherDirection = false;
-                this.walking_sound.play()
-        }
-            if(this.world.keyboard.LEFT && this.x > 0){
-                this.moveLeft();
-                this.otherDirection = true;
-            this.walking_sound.play()
-        }
-            if(this.world.keyboard.UP && !this.isAboveGround()){
-                this.speedY = 30;
-        }
-        if( this.world.keyboard.SPACE && !this.isAboveGround()){
-            this.jump();
-        }
-            this.world.camera_x = -this.x + 100;
-    }, 1000/60);
 
-    setInterval(() => {
-        if(this.isDead()){
-            this.playAnimation(this.IMAGES_DEAD);
-        }else if (this.isHurt()){
+    CheckIsHurt(){
+       if (this.isHurt()){
             this.playAnimation(this.IMAGES_HURT);
         }
-        else if (this.isAboveGround()){
+    }
+
+    CheckIsMoving(){
+        if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
+            this.playAnimation(this.IMAGES_WALKING);
+            this.storeTime();   
+        }
+    }
+    CheckIsAboveGround(){
+        if (this.isAboveGround()){
             this.playAnimation(this.IMAGES_JUMPING);
             this.storeTime();
-        } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
-            this.playAnimation(this.IMAGES_WALKING);
-            this.storeTime();
-            
-        } else if((this.storeActualTime + this.timeToIdle) < this.getActualTime()) {
-            this.playAnimation(this.IMAGES_SLEEPING);
         }
-        else{
+    }
+
+    CheckIsIdeling(){
+        const timeSinceLastAction = this.getActualTime() - this.storeActualTime;
+        if(timeSinceLastAction > this.timeToIdle) {
+            this.playAnimation(this.IMAGES_SLEEPING);
+        } else {
             this.playAnimation(this.IMAGES_IDLE);            
         } 
-    }, 100);
-}
+    }
+
+    CheckIsDead(){
+        if(this.isDead()){
+            this.playAnimation(this.IMAGES_DEAD);
+        }
+    }
+
+ 
+
+    animate() {
+        this.startMovementInterval();
+        this.startAnimationInterval();
+    }
+
+    startMovementInterval() {
+        setInterval(() => {
+            this.handleMovement();
+            this.handleJumping();
+            this.updateCamera();
+        }, 1000/60);
+    }
+
+    handleMovement() {
+        this.walking_sound.pause();
+        if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            this.moveRight();
+            this.otherDirection = false;
+            this.walking_sound.play();
+        }
+        if(this.world.keyboard.LEFT && this.x > 0) {
+            this.moveLeft();
+            this.otherDirection = true;
+            this.walking_sound.play();
+        }
+    }
+
+    handleJumping() {
+        if(this.world.keyboard.UP && !this.isAboveGround()) {
+            this.speedY = 30;
+        }
+        if(this.world.keyboard.SPACE && !this.isAboveGround()) {
+            this.jump();
+        }
+    }
+
+    updateCamera() {
+        this.world.camera_x = -this.x + 100;
+    }
+
+    startAnimationInterval() {
+        setInterval(() => {
+            this.updateCharacterAnimation();
+        }, 100);
+    }
+
+    updateCharacterAnimation() {
+        if (this.isDead()) {
+            this.CheckIsDead();
+        } else if (this.isHurt()) {
+            this.CheckIsHurt();
+        } else if (this.isAboveGround()) {
+            this.CheckIsAboveGround();
+        } else if ( this.world.keyboard.LEFT || this.world.keyboard.RIGHT) {
+            this.CheckIsMoving();
+        } else {
+            this.CheckIsIdeling();
+        }
+    }
 }
