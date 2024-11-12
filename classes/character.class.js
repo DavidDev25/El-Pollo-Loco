@@ -120,8 +120,6 @@ class Character extends MoveableObject {
         }
     }
 
- 
-
     animate() {
         this.startMovementInterval();
         this.startAnimationInterval();
