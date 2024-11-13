@@ -70,9 +70,9 @@ class Character extends MoveableObject {
     world;
 
     walking_sound = new Audio('audio/running.mp3')
+  
     jumping_sound = new Audio('audio/jump.mp3')
   
-
     constructor(){
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -85,7 +85,6 @@ class Character extends MoveableObject {
         this.animate();
     }
     
-
     CheckIsHurt(){
        if (this.isHurt()){
             this.playAnimation(this.IMAGES_HURT);
