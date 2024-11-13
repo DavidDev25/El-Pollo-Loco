@@ -1,12 +1,12 @@
-class StatusBar extends DrawableObject {
+class coinBar extends DrawableObject {
  
     IMAGES = [
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png', //0
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/20.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/40.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/60.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/80.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/100.png', //5
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/0.png', //0
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/20.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/40.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/60.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/80.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/100.png',
     ];
 
     percentage = 100;
@@ -15,10 +15,10 @@ class StatusBar extends DrawableObject {
         super();
         this.loadImages(this.IMAGES);
         this.x  = 20;
-        this.y = -20;
+        this.y = 25;
         this.width = 200;
         this.height  = 70
-        this.setPercentage(100);
+        this.setPercentage(0);
     }
 
     setPercentage(percentage){

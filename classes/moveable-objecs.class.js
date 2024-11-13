@@ -19,20 +19,7 @@ class MoveableObject extends DrawableObject{
   isAboveGround() {
     return this.y < 155;
   }
-
-
-
-
-  drawFrame(ctx) {
-    if (this instanceof Character || this instanceof Chicken || this instanceof smallChicken) {
-      ctx.beginPath();
-      ctx.lineWidth = "6";
-      ctx.strokeStyle = "red";
-      ctx.rect(this.x, this.y, this.width, this.height);
-      ctx.stroke();
-    }
-  }
-
+  
   isColliding(mo) {
     return (
       this.x + this.width > mo.x &&
