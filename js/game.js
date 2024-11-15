@@ -59,7 +59,6 @@ window.addEventListener("keyup", (e) => {
         keyboard.SPACE = false;
     }
 
-
     if(e.keyCode == 70){
         keyboard.F = false;
     }
