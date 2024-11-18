@@ -33,9 +33,7 @@ window.addEventListener("keydown", (e) => {
         keyboard.F = true;
     }
 
-    
-    
-    
+    console.log(e);
 })
 
 window.addEventListener("keyup", (e) => {

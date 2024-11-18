@@ -2,6 +2,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url(./img/ElPolloLocoBackground.png);
+  background-size: cover;
 }
 
 canvas {

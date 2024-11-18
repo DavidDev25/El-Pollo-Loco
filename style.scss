@@ -1,30 +1,31 @@
-body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(./img/ElPolloLocoBackground.png);
+  background-size: cover;
 }
 
-canvas{
-    background-color: black;
-    display: block;
+canvas {
+  background-color: black;
+  display: block;
 }
 
 @media only screen and (max-width: 48rem) {
-    h1{
-        display: none;
-    }
-    
-    canvas{
-        width: 100%;
-    }    
+  h1 {
+    display: none;
+  }
+
+  canvas {
+    width: 100%;
+  }
 }
 
-
 @media only screen and (max-height: 30rem) {
-    canvas{
-        height: 100vh;   
-    }    
-    h1{
-        display: none;
-    }
+  canvas {
+    height: 100vh;
+  }
+  h1 {
+    display: none;
+  }
 }
