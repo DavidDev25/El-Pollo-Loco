@@ -8,7 +8,7 @@ class World{
     statusbar = new StatusBar();
     coinbar = new coinBar();
     bottlebar = new bottlebar()
-    throwableObjects = [new ThrowableObject()]
+    throwableObjects = []
 
 
     constructor(canvas){
@@ -17,24 +17,34 @@ class World{
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollision();
-        this.run
+        this.run()
     }
 
     setWorld(){
         this.character.world = this;
     }           
 
-    checkCollision(){
+    run(){
         setInterval(() =>{          
-            this.level.enemies.forEach((enemy) => {
-               if( this.character.isColliding(enemy) ) {
-                this.character.hit();
-                this.statusbar.setPercentage(this.character.energy);
-                // this.coinbar.setPercentage(this.character.energy);
-               }
-            })
-        },200);
+        this.checkCollisions();
+        this.checkThrowObjects();
+        }, 200);
+    }
+
+    checkThrowObjects(){
+        if(this.keyboard.F){
+            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
+            this.throwableObjects.push(bottle)
+        }
+    }
+
+    checkCollisions(){
+        this.level.enemies.forEach((enemy) => {
+        if (this.character.isColliding(enemy)){
+            this.character.hit();
+            this.statusbar.setPercentage(this.character.energy);
+            ffff}
+        });
     }
 
     draw(){
