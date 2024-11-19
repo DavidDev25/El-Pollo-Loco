@@ -6,6 +6,7 @@ body {
   background-image: url(./img/ElPolloLocoBackground.png);
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 canvas {
@@ -37,3 +38,14 @@ canvas {
     height: 100vh;
   }
 } /*# sourceMappingURL=style.css.map */
+
+.btns {
+  display: flex;
+  width: 12.5rem;
+  justify-content: space-between;
+  height: 2.5rem;
+}
+
+.btnsWrapper {
+  display: flex;
+}
