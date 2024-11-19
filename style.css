@@ -34,4 +34,16 @@ canvas {
   canvas {
     height: 100vh;
   }
+} 
+@media only screen and (max-height: 65rem) {
+  body {
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  h1 {
+    display: none;
+  }
+  canvas {
+    height: 100vh;
+  }
 }/*# sourceMappingURL=style.css.map */

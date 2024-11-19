@@ -15,27 +15,35 @@ canvas {
   h1 {
     display: none;
   }
-
   body {
     background-size: cover;
     background-repeat: no-repeat;
   }
-
   canvas {
     width: 100%;
   }
 }
-
 @media only screen and (max-height: 30rem) {
   body {
     background-size: cover;
     background-repeat: no-repeat;
   }
-
   h1 {
     display: none;
   }
+  canvas {
+    height: 100vh;
+  }
+} /*# sourceMappingURL=style.css.map */
 
+@media only screen and (max-height: 65rem) {
+  body {
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  h1 {
+    display: none;
+  }
   canvas {
     height: 100vh;
   }
