@@ -9,6 +9,7 @@ class World {
   coinbar = new coinBar();
   bottlebar = new bottlebar();
   throwableObjects = [];
+  timestamp = true;
 
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
@@ -25,16 +26,17 @@ class World {
 
   run() {
     setInterval(() => this.checkCollisions(), 100);
-    setInterval(() => this.checkThrowObjects(), 100);
+    setInterval(() => this.checkThrowObjects(), 1);
   }
 
   checkThrowObjects() {
-    if (this.keyboard.F) {
-      let bottle = new ThrowableObject(
-        this.character.x + 100,
-        this.character.y + 100
-      );
+    if (this.keyboard.F && this.timestamp) {
+      let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
       this.throwableObjects.push(bottle);
+      this.timestamp = false;
+      setTimeout(() => {
+        this.timestamp = true;
+      }, 1000);
     }
   }
 
